@@ -5,11 +5,11 @@ public class TestOverloading {
 	// 형이 다른 메서드를 이용해 매개 변수의 값으로 차이를 두어 오버로딩 실현
 	double square(double df) {
 		test();
-		return df * df;
+		return df * df; /*메소드 종료!*/
 	}
 
 	int square(int num) {
-		return num * num;
+		return num * num; /*메소드 종료!*/
 	}
 
 	void test() {

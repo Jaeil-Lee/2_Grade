@@ -3,11 +3,11 @@ package test_1;
 public class TestObjectbasic {
 	double squareDouble(double df) {
 		test();
-		return df * df;
+		return df * df; /*메소드 종료!*/
 	}
 
 	int squareInt(int num) {
-		return num * num;
+		return num * num; /*메소드 종료!*/
 	}
 
 	void test() {

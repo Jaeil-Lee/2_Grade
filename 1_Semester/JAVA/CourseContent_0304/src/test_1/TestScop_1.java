@@ -9,7 +9,9 @@ public class TestScop_1 {
 	
 	// 이렇게 하면 private를 해도 다른 클래스에서 불러올 수 있다. 
 	String getName() {
-		return name; // this.name 이 원래모습이지만 this가 생략되어 있다
+		
+		/*메소드 종료!*/
+		return name; // this.name 이 원래모습이지만 this가 생략되어 있다  
 	}
 	
 	void setName(String name) {
