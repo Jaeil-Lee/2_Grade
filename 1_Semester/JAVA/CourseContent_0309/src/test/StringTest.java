@@ -4,13 +4,17 @@ public class StringTest {
   public static void main(String[] args) {
     System.out.println("----------------------------------------------------------------------------------------------");
    
-    /* String 객체는 immutable 이다 , mutable이 아니다. 
-         =>  String 객체의 값은 변경할 수 없다!!!
+    /* 
+      String 객체는 immutable 이다 , mutable이 아니다. 
+        =>  String 객체의 값은 변경할 수 없다!!!
+
+      문자열은 자주 사용되므로 new 연산자를 사용하지 안혹 문자열을 상수로 표기해도 자동적으로 객체가 생성된다
     */
 
 
-/* 1 */
-    String proverb = "A barking dog";
+
+/* 1 */ 
+    String proverb = "A barking dog";  // 이렇게 해도 객체가 생성된다 
     String stringT1, stringT2 ,stringT3, stringT4 ;
 
 
@@ -48,8 +52,8 @@ public class StringTest {
     int integerValue = Integer.parseInt(testValue);  // Static Method (정적 매소드)  ! 
     double doubleValue = Double.parseDouble(testValue);  // Static Method (정적 매소드)  ! 
 
-    System.out.println(integerValue);
-    System.out.println(doubleValue);
+    System.out.println(integerValue); //int 형이 저장
+    System.out.println(doubleValue);  // double 형이 저장
 
   }
 }
