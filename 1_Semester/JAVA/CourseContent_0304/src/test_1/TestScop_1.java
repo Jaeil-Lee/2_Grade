@@ -14,10 +14,16 @@ public class TestScop_1 {
 		return name; // this.name 이 원래모습이지만 this가 생략되어 있다  
 	}
 	
+	// 정적 메소드  (Static method) => 인스턴스화 되지 않아도 접근이 可能	
+	static void sayHello() {
+		System.out.println("betty!!!!!!!!");
+	}
+
 	void setName(String name) {
 		this.name = name;   // 오른쪽은 7번째 줄 name이고 오른쪽은 매개변수의 name이다
 	}
 	
+
 	// 형이 다른 메서드를 이용해 매개 변수의 값으로 차이를 두어 오버로딩 실현
 	double square(double df) {
 		test();
@@ -50,6 +56,11 @@ public class TestScop_1 {
 		System.out.println(true);
 		System.out.println(8.678);
 
+
+		 TestScop_1.sayHello(); // 그냥 static Method 개념으로 출력
+
+		 TestScop_1 staticMethod = new TestScop_1(); // staticMethod란 인스턴스 생성
+		 staticMethod.sayHello();                    //후 출력
 	}
 
 }
