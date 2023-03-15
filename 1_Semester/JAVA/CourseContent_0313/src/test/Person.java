@@ -26,6 +26,15 @@ package test;
  */
 
 public class Person {
+  /* 
+    ※ 멤버 변수를 private로 설정하는 이유 ※
+      1. 잘못된 값을 설정하는 것을 막아줄 필요가 있다 
+      2. 읽기전용 멤버 변수로 만들 수 있다.
+      3. 클래스 소스코드를 업그레이드할 경우, 
+          그 클래스를 사용하는 다른 코드에 미치는 영향을 최소화 할 수 있다     
+  */
+      
+
   /* private - 읽기 전용 값들이다 */
   private String name = "이재성";
   private int myAge;     // private 써도 내부에서는 아무 문제가 없다 , private 쓰면 읽기 전용 멤버 변수를 만들 수 있다
@@ -52,7 +61,7 @@ public class Person {
     return myAge;
   }
 
-  private void test() {
-    System.out.println(name);
-  }
+  // private void test() {
+  //   System.out.println(name);
+  // }
 }

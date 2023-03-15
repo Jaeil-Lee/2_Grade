@@ -10,10 +10,10 @@ public class PersonTest {
     String getDept= p.dept; // protected 사용 했을 때 가능 하다 , private쓰면 보이지 않아서 에러 뜬다 
 
     System.out.println(p.getAge());
-
+    
     System.out.println(p.getName());
     System.out.println(p.getDept());
-
+    
 
     // p.name = "이재일"; // private 써놓았기 때문에 외부에서 접근 불가하다
     // p.age = 28;
