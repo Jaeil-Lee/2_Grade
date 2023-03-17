@@ -3,12 +3,12 @@ class Box {
   private int width , length , height;     //  👌 private int volume; // 계산해서 얻을 수 있는 값은 써도 그만 안써도 그만
  
   /* 1 */
-    // 보기 편하게 이렇게 만들어 놓으면 IDE에서 값 넣을 때 보기 편하다 
-    public Box(int width, int length , int height){   //  public Box(int w, int l , int h)
-      this.width = width;                             //    width = w;
-      this.length = length;                           //    length = l;
-      this.height = height;                           //    height = h;
-      // volume = width * length * height;
+    // 보기 편하게 이렇게 만들어 놓으면 IDE에서 값 넣을 때 보기 편하다         이렇게도 작성 가능하다 ( 똑같다 )
+    public Box(int width, int length , int height){                   //  public Box(int w, int l , int h)
+      this.width = width;                                             //    width = w;
+      this.length = length;                                           //    length = l;
+      this.height = height;                                           //    height = h;
+      // volume = width * length * height;  직접 게산하는 메서드로 대체
     }
   
   /* 2 */

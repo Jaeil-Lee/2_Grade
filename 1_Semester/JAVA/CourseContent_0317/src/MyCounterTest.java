@@ -2,18 +2,21 @@ class MyCounter{
 
   private int value;
   
+  /* 1 */
   // Setter
   public void setValue(int value){
     this.value = value;
   }
 
+  /* 2 */
   // Getter
   public int getValue(){
     return value;
   }
 
   
-/*인스턴스 멤버에 접근하지 않는데 굳이 인스턴스 메소드의 존재는 필요 없다 */
+  /* 3 */
+  /*인스턴스 멤버에 접근하지 않는데 굳이 인스턴스 메소드의 존재는 필요 없다 */
   public static void addOne(int val){
     val = val +1;  // => addOne 메서드 안에서만 존재해서 이 메서드가 끝나면 사라진다
   }
@@ -24,6 +27,8 @@ class MyCounter{
     cntObj.setValue(testValue);   
   }
 */  
+
+  /* 4 */
   public static void increase(MyCounter cntObj){   // 본인class 자신을 자료형으로 사용가능! 
     int testValue = cntObj.getValue()+1;
     cntObj.setValue(testValue);
