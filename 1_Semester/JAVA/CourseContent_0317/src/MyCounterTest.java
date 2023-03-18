@@ -46,23 +46,22 @@ public class MyCounterTest {
     */
     // int val = 10;
     // MyCounter.addOne(val);
-    // System.out.println(val);
-
+    // System.out.println(val);  //  결과 : 10
     /*------------------------------------------------------------------------------------------------------------------- */
 
-    /* ※ 2. call by reference ※  => ✅객체를 메소드로 전달
-      call by reference 의 경우 주소 값을 가지고 같은 객체로 작업을 하는 것이라 
-      원본 데이터에 직접적인 영향을 준다 ⭕
+    // /* ※ 2. call by reference ※  => ✅객체를 메소드로 전달
+    //   call by reference 의 경우 주소 값을 가지고 같은 객체로 작업을 하는 것이라 
+    //   원본 데이터에 직접적인 영향을 준다 ⭕
 
-      객체를 메소드로 전달하게 되면 객체가 복사되어 전달되는 것이 아니고 
-      참조 변수의 값이 복사 되어서 전달 된다
+    //   객체를 메소드로 전달하게 되면 객체가 복사되어 전달되는 것이 아니고 
+    //   참조 변수의 값이 복사 되어서 전달 된다
       
-      ❣️ 반환하는 값도 객체일 수 있다 ❣️
-    */
+    //   ❣️ 반환하는 값도 객체일 수 있다 ❣️
+    // */
     MyCounter mc = new MyCounter();
     mc.setValue(10);
     MyCounter.increase(mc);
-    System.out.println(mc.getValue());
+    System.out.println(mc.getValue()); //  결과 : 11
 
   }
 }

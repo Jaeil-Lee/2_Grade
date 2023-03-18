@@ -12,7 +12,7 @@ class Box {
     }
   
   /* 2 */
-    //Getter
+    //Getter 
     public int getVolume() {
       return width * length * height;
     }
