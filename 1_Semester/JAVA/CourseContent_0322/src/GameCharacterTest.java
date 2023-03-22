@@ -44,7 +44,7 @@ class GameCharacter{
     // 기본으로 객체 생성시 출력하게 한다. ( Object에서 상속)
     @Override
     public String toString(){
-      return "GameItem [name="+ name + ", type" + type + ", price=" + price + "]";
+      return "GameItem [name="+ name + ", type = " + type + ", price=" + price + "]";
     }
   } // -------내부 클래스 끝 ---------
 
@@ -56,6 +56,7 @@ class GameCharacter{
       item.name = name;
       item.type = type;
       item.price = price;
+      list.add(item);
   }
 
   public void print() {
