@@ -1,3 +1,5 @@
+import java.security.PublicKey;
+
 class Box {
   //           幅　　　　横　　 　縦　　　　　　
   private int width , length , height;     //  👌 private int volume; // 계산해서 얻을 수 있는 값은 써도 그만 안써도 그만
@@ -27,6 +29,23 @@ class Box {
       return box2;
     }
 
+
+  // /* 4 */
+  //   // 인자로 주어지는 Box 객체와 동일한 너비와 높이를 가지는 Box 인지 체크하는 메소드 => 같으면 true , 다르면 false 를 반환
+  //   public boolean isSameBox (Box box) {
+  //     /*
+  //         나의 width , length , height 가 인자로 주어진 box의 그것과 모두 같으면 
+  //         true를 반환 , 그렇지 않으면 false를 반환 
+
+  //         this(생성된 인스턴스 자체를 나타낸다 ) -> 내 자신을 나타내는 키워드 ( 인스턴스 안에서만 사용할 수 있다)
+  //      */
+
+  //     if (width ==box.width && length ==box.length && height ==box.height ) {
+  //       return true;
+  //     }
+  //     return false;
+  //   }
+
 }
 
 
@@ -46,6 +65,11 @@ public class BoxTest {
   // 3. 조건문으로 결과 값을 새로운 객체에 저장 (largerBox)
     Box largerBox= Box.whoIsLargerBox(b1, b2);
     System.out.println( "결과 :" + largerBox.getVolume());
+    
+
+  // // 4. 
+  //   boolean resultofBox = b1.isSameBox(b2);
+  //   System.out.println( "박스 1과 박스 2는 같다??  :" + resultofBox);
 
   }
 }
