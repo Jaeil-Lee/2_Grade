@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>끝말잇기</title>
+</head>
+
+<body>
+
+    <!-- 🔴html body 내용🔴 -->
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>제시어 : <span id="word"></span></div>
+    <input type="text">
+    <button>입력</button>
+
+
+    <!-- 🟡자바스크립트🟡 -->
+    <script >
+
+      // const nOfPlayer = prompt ('몇 명이 참가할꺼냐?');
+      // prompt로 받는 값은 무조건 🚩String🚩 으로 반환된다! ,때문에 숫자형으로 바꿔야함
+
+      /*
+      　「　입력 값을 number형으로 변환 방법 2가지　」
+      1. parseInt(str)
+        - parseInt( prompt ('몇 명이 참가할꺼냐?') );
+      2. Number(str)  / Number는 사용자 정의 객체이다
+        - Number( prompt ('몇 명이 참가할꺼냐?') );
+      */  
+
+     const nOfPlayer = Number(prompt ('몇 명이 참가할꺼냐?')); // prompt로 받는 값은 무조건 🚩String🚩 으로 반환된다!
+      console.log('typeof:', typeof nOfPlayer); 
+      alert('typeof : ' +('typeof:', typeof nOfPlayer) );
+      const test = confirm("머라노 코딩해야지!!")
+    </script>
+
+</body>
+</html>
