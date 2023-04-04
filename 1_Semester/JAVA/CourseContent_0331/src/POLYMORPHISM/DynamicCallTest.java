@@ -1,4 +1,6 @@
 package POLYMORPHISM;
+/* 동적 메소드 호출  */
+
 
 class Animal {
   void sound () {
