@@ -10,7 +10,14 @@ package POLYMORPHISM2;
     private String name; 
     private String stdNum;
   
+    
+    // 생성자
+    public Student (String name , String stdNum ){
+      this.name = name; //이재일
+      this.stdNum = stdNum; // 10131501
+    }
   
+
     public String getName() {
       return name;
     }
@@ -24,12 +31,6 @@ package POLYMORPHISM2;
       this.stdNum = stdNum;
     }
   
-    
-    // 생성자
-    public Student (String name , String stdNum ){
-      this.name = name;
-      this.stdNum = stdNum;
-    }
   
     @Override
     public String toString() {
@@ -50,11 +51,11 @@ package POLYMORPHISM2;
       Student std = (Student)anotherVal;  // 하향 형 변환
       
       //String 클래스는 이미 compareTo 메소드를 가진다
-      // 인자로 전달도니 무자열과 비교해 사전 순서에 따라 1, 0 , -1을 반환한다.
+      // 인자로 전달도니 문자열과 비교해 사전 순서에 따라 1, 0 , -1을 반환한다.
   
       // 🟠 이름 순 정렬
-      String youString = std.getName();
-      return name.compareTo(youString); 
+      String youString = std.getName(); // => value[j]의 name을 getter로 가져옴
+      return name.compareTo(youString);  // 현재 value[i]의 name과 value[j]의 name을 비교하는 것
       
       
       // 🟠 학번 순 정렬

@@ -19,7 +19,7 @@ public class Util2 {
     }
   
     public static void selectionSort(Comparable[] values) {
-      for (int i = 0; i < values.length; i++) {
+      for (int i = 0; i < values.length; i++) { // 임의로 5칸 설정 = 5번
         int minIdx = i; 
         for (int j = i+1; j < values.length; j++ ) {
           // 현재까지 찾은 최소값(values[minIdx])과 
