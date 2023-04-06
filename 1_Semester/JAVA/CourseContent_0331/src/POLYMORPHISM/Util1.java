@@ -1,6 +1,6 @@
 package POLYMORPHISM;
 
-public class Util {
+public class Util1 {
 
   public static void selectionSort(int[] values) {
       for (int i = 0; i < values.length; i++) {

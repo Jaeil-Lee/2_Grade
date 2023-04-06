@@ -15,7 +15,7 @@ public class Sorting {
     }
 
     System.out.println("\n정렬 후 :");
-    Util.selectionSort(values);
+    Util1.selectionSort(values);
     for (int val : values) {
       System.out.print(val + " ");
     }
