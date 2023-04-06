@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,34 +7,100 @@
   <title>끝말잇기</title>
 </head>
 
+
+
+<!-- 🔴 HTML 🔴 -->
 <body>
-
-    <!-- 🔴html body 내용🔴 -->
-    <div><span id="order">1</span>번째 참가자</div>
-    <div>제시어 : <span id="word"></span></div>
-    <input type="text">
-    <button>입력</button>
+<div><span id="order">1</span>번째 참가자</div>
+<div>제시어: <span id="word"></span></div>
+<input type="text">
+<button>입력</button>
 
 
-    <!-- 🟡자바스크립트🟡 -->
-    <script >
 
-      // const nOfPlayer = prompt ('몇 명이 참가할꺼냐?');
-      // prompt로 받는 값은 무조건 🚩String🚩 으로 반환된다! ,때문에 숫자형으로 바꿔야함
+<!-- 🟡 JAVASCRIPT 🟡 -->
+<script>
+  const nOfPlayer = Number(prompt('몇명이 참가할 건지요?'));
+  const $input = document.querySelector('input');
+  const $button = document.querySelector('button');
+  const $word = document.querySelector('#word');   // span태그 엘리먼트 선택
+  const $order = document.querySelector('#order');
+  let jesiWord;  // 초기값 undefined
+  let inputtedWord; // 게임 참가자가 입력한 단어 저장
 
-      /*
-      　「　입력 값을 number형으로 변환 방법 2가지　」
-      1. parseInt(str)
-        - parseInt( prompt ('몇 명이 참가할꺼냐?') );
-      2. Number(str)  / Number는 사용자 정의 객체이다
-        - Number( prompt ('몇 명이 참가할꺼냐?') );
-      */  
 
-     const nOfPlayer = Number(prompt ('몇 명이 참가할꺼냐?')); // prompt로 받는 값은 무조건 🚩String🚩 으로 반환된다!
-      console.log('typeof:', typeof nOfPlayer); 
-      alert('typeof : ' +('typeof:', typeof nOfPlayer) );
-      const test = confirm("머라노 코딩해야지!!")
-    </script>
+
+  
+  $button.addEventListener(  // 이벤트의 등록
+    'click',
+    (event) => {
+      //console.log('버튼 누름2');
+      if (!jesiWord) { // 최초 실행시 !undefined, 제시어가 비어있다.
+        //  입력한 단어를 제시어로 저장한 후 화면에 표시
+
+        jesiWord = inputtedWord;  // 입력한 단어를 제시어로 저장
+        $word.textContent = jesiWord;  //화면에 표시
+
+        /* const order = Number($order.innerHTML);
+        if(order+1>nOfPlayer){
+          $order.innerHTML = 1;
+        }else{
+          $order.innerHTML = order+1;
+        } */
+        let order = Number($order.innerHTML);
+        $order.innerHTML = (order++) % nOfPlayer + 1;
+
+        $input.value = '';
+        $input.focus();
+
+
+      } else {  // 제시어가 비어 있지않다
+        // 입력한 단어가 올바른지 구현
+        if (jesiWord[jesiWord.length - 1] === inputtedWord[0]) {
+          // 입력단어가 올바름
+          //           alert('올바름');
+
+          jesiWord = inputtedWord;  // 입력한 단어를 제시어로 저장
+          $word.textContent = jesiWord;  //화면에 표시
+
+          /*             const order = Number($order.innerHTML);
+                      if(order+1>nOfPlayer){
+                        $order.innerHTML = 1;
+                      }else{
+                        $order.innerHTML = order+1;
+                      } */
+          let order = Number($order.innerHTML);
+          $order.innerHTML = (order++) % nOfPlayer + 1;
+
+
+          $input.value = '';
+          $input.focus();
+
+        } else {
+          // 입력단어가 틀림
+          alert('틀림');
+
+
+          $input.value = '';
+          $input.focus();
+
+        }
+
+
+      }
+    }
+  );
+  $input.addEventListener(
+    'input',
+    (event) => {
+      //console.log('이벤트가 발생한 엘리먼트 ',event.target);
+      console.log('입력한 글자 ', event.target.value);
+      inputtedWord = event.target.value;
+    }
+  );
+</script>
+
 
 </body>
+
 </html>
