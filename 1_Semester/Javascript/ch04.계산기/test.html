@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--- タイトル --->
+  <title>Document</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- 初期化 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+  <!-- Javascript -->
+  <!-- <script src="./js/main.js"></script> -->
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- 題名 -->
+    <div class="name">
+      一番
+    </div>
+
+    <!-- 🟡 operator -->
+    <input readonly id="operator">
+    <!-- 🟢 result -->
+    <input readonly type="number" id="result">
+
+    <!-- 1行目－7 , 8 , 9 -->
+    <div class="row">
+      <button id="num-7">7</button>
+      <button id="num-8">8</button>
+      <button id="num-9">9</button>
+      <button id="plus">+</button>
+    </div>
+
+    <!-- ２行目－ 4 , 5 , 6 -->
+    <div class="row">
+      <button id="num-4">4</button>
+      <button id="num-5">5</button>
+      <button id="num-6">6</button>
+      <button id="minus">-</button>
+    </div>
+
+    <!-- ３行目－ 1 , 2 , 3 -->
+    <div class="row">
+      <button id="num-1">1</button>
+      <button id="num-2">2</button>
+      <button id="num-3">3</button>
+      <button id="divide">/</button>
+    </div>
+
+    <!-- ４行目－ 1 , 2 , 3 -->
+    <div class="row">
+      <button id="clear">C</button>
+      <button id="num-0">0</button>
+      <button id="calculate">=</button>
+      <button id="multiply">x</button>
+    </div>
+
+  </div><!-- container-->
+
+
+
+  <script>
+    let numOne = '';
+    let operator = '';
+    let numTwo = '';
+    let numMore = '';
+
+    const $operator = document.querySelector('#operator'); // 🟡 operator
+    const $result = document.querySelector('#result');     // 🟢 result
+
+
+
+
+    /* 🚩 1. NUMBER*/
+
+    //  1.1. 콜백 함수 - onClickNum  
+    function onClickNum(e) {
+      // console.log(e.target.textContent);
+      // 두 번째 이상 입력 
+      if (numMore) {
+        
+        // $result.value ='';
+        numOne += e.target.textContent;
+        console.log(numOne, '첫번째');
+        console.log(numMore, ' = numMore');
+      }
+      else if (operator) {
+       
+        numTwo += e.target.textContent;
+        console.log(numTwo, "두번째");
+        // only 첫 번째 입력
+      } else {
+        numOne += e.target.textContent;
+        console.log(numOne, '첫번째');
+      }
+      $result.value += e.target.textContent;
+    }
+
+    // 1.2. querySelector
+    for (let index = 0; index < (9) + 1; index++) {
+      document.querySelector(`#num-${index}`).addEventListener('click', onClickNum) // 0,1,2,3,4,5,6,7,8
+    }
+    // <>
+    //   document.querySelector('#num-0').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-1').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-2').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-3').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-4').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-5').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-6').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-7').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-8').addEventListener('click', onClickNum);
+    //   document.querySelector('#num-9').addEventListener('click', onClickNum);
+    // </>
+
+
+
+    /* 🚩 2. OPERATOR */
+    //  2.1. 콜백 함수 - onClickOperator  
+
+    function onClickOperator(e) {
+      $operator.value = e.target.innerHTML;
+      if(numMore){
+        operator = e.target.innerHTML;
+        console.log(operator);
+        $result.value = '';
+        numOne = ''
+      }
+      else if (numOne) {
+        operator = e.target.innerHTML;
+        console.log(operator);
+        $result.value = '';
+      } else {
+        alert('첫번째 숫자를 입력하세용!!!!')
+      }
+    }
+    // 2.2. querySelector
+    document.querySelector('#plus').addEventListener('click', onClickOperator);
+    document.querySelector('#minus').addEventListener('click', onClickOperator);
+    document.querySelector('#divide').addEventListener('click', onClickOperator);
+    document.querySelector('#multiply').addEventListener('click', onClickOperator);
+
+
+
+    /* 🚩 3. CALCULATE ' = '   */
+    // 3.1 콜백 함수 - onClickCalulate 
+    function onClickCalulate(e) {
+      if (numOne && numMore) {
+        let result = eval(numMore + operator +numOne );
+        $result.value = result;
+        numMore = result;
+        console.log("3.현재 numMore= "+numMore + ", numOne= "+numOne ,"=>>>>> " + result);
+      } else if (numOne && numTwo) {
+        let result = eval(numOne + operator + numTwo);
+        $result.value = result;
+        numMore = result;
+        console.log("현재 numMore = "+numMore);
+      }
+    }
+
+    // 3.2. querySelector
+    document.querySelector('#calculate').addEventListener('click', onClickCalulate);
+
+
+    /* 🚩 4. CLEAR  ' C ''    */
+    // 4.1 콜백 함수 - onClickClear 
+    function onClickClear(e) {
+      $result.value = '';
+      numOne = '';
+      operator = '';
+      numTwo = '';
+      result = '';
+    }
+
+    // 4.2. querySelector
+    document.querySelector('#clear').addEventListener('click', onClickClear);
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
