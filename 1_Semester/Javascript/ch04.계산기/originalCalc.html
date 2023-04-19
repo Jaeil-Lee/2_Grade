@@ -45,10 +45,8 @@
     let numOne = '';
     let operator = '';
     let numTwo = ''
-    
-    // 화면 표시
-    /* 🚩*/const $operator = document.querySelector("#operator");
-    /* 🚩*/const $result = document.querySelector("#result");
+    const $operator = document.querySelector("#operator");
+    const $result = document.querySelector("#result");
 
 /*     document.querySelector("#num-0").addEventListener(
       'click',
@@ -185,7 +183,7 @@
     $result.value +=numStr;
    }; */
 
-// 🟡 R1 적용
+// R1 적용
 /*    const onClickNum = (numStr)=>(event)=>{
     if(operator){
       if(!numTwo){  // nest if
@@ -200,7 +198,7 @@
     //$result.value +=numStr;  // 공통 절차
    }; */
 
-   //🟡 R2적용
+   //R2적용
 /*    const onClickNum = (numStr)=>(event)=>{
     if(!operator){   // 짧은 절차
       numOne +=numStr;
@@ -215,7 +213,7 @@
     //$result.value +=numStr;  // 공통 절차
    }; */
 
-   //🟡 R3,  R4 적용
+   //R3,  R4 적용
    const onClickNum = (numStr)=>(event)=>{
     if(!operator){   // 짧은 절차
       numOne +=numStr;
@@ -270,7 +268,6 @@
     }
    };
 
-   //🟡🟡🟡🟡🟡🟡 꼭 되는지 안 되는지 시험 해봐라🟡🟡🟡🟡🟡🟡🟡🟡
 /*    const onClickOper = (event) =>{
     if(numOne){
       operator = event.target.textContent;
@@ -305,7 +302,7 @@
         if(numTwo){
           switch(operator){
             case '+': // operator === '+'
-              $result.value = Number(numOne) + parseInt(numTwo);
+              $result.value = Number(numOne)+parseInt(numTwo);
               break;
             case '-': 
               $result.value = numOne-numTwo;
@@ -326,7 +323,7 @@
     document.querySelector("#clear").addEventListener(
       'click',
       (ev)=>{
-        numOne = numTwo = operator = ''; // 우측에서 좌측으로 대입 => 이같은 경우는 우측에서 줄줄이 대입 
+        numOne = numTw0 = operator = '';
         $result.value = $operator.value = '';
       }
     );
