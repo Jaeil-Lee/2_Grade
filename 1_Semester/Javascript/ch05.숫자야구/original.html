@@ -73,7 +73,7 @@
           return;
         }
         if(sidoArr.length>10){
-          const msg = document.createTextNode(`패배! 정답: ${anwser.join('')}`);
+          const msg = document.createTextNode(`패배! 정답: ${answer.join('')}`);
           $logs.appendChild(msg);
           //$logs.textContent = `패배! 정답: ${anwser.join('')}`;
           return;
@@ -82,9 +82,6 @@
         let nOfStrike = 0;
         let nOfBall = 0;
 
-        // 🔴🔴🔴🔴🔴🔴🔴🔴 for 문을 -> forEach로 바꿔라 , 서로 형태를 바꿔라 , 🔴시험🔴 
-
-        // 🟡 1. for 🟡
         /* for (let i = 0;i<answer.length;i++){
           const index = value.indexOf(answer[i]);
           if(index>-1){  // indexOf() 못찾으면 -1 반환, 찾으면 해당하는 index번호값 반환
@@ -95,32 +92,31 @@
             }
           }
         } */
+        // forEach수정하기
 
-        // 🟡 2. forEach수정하기 🟡 
-        answer.forEach((answerValue,answerIndex)=>{  // 교과서에는 answerValue를 number로
+        answer.forEach((answerValue,answerIndex)=>{
           const index = value.indexOf(String(answerValue));
-          // String(): 문자열 객체를 생성하는 함수
-          // Number(): 숫자객체를 생성하는 함수 
-          // Date(), Array() ... 
-          if(index>-1){  // indexOf() 못찾으면 -1 반환, 찾으면 해당하는 index번호값 반환
+          // String(): 문자열객체를 생성하는 함수
+          // Number(): 숫자객체를 생성하는 함수
+          // Date(), Array() ...
+          if(index>-1){  
             if(index===answerIndex){
               nOfStrike++;
             }else{
               nOfBall++;
             }
           }
-        })
-        // 🚩 배열 라이브러리가 막강하기 때문에 for문 대신에 배열 라이브러리를 사용하는 것이 편리하다 🚩        
+        });
 
 
-        $logs.append(`${value}: ${nOfStrike} 스트라이크 ${nOfBall} 볼`,document.createElement('br'));
+
+        $logs.append(`${value}: ${nOfStrike} 스트라이크 ${nOfBall} 볼`,
+            document.createElement('br'));
 
         sidoArr.push(value);  // 시도횟수 1추가 
       }
     );
-      if (condition) {
-        
-      }
+
 
 
 

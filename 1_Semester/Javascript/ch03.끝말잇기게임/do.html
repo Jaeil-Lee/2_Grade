@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div class="oneLine"><span id="number">1</span>참가자</div>
+<div class="twoLine">제시어 : <span id="jesi"></span></div>
+<form action="" id="form">
+  <input type="text" id="input">
+  <button id="btn">입력</button>
+</form>
+
+<script>
+  $ninnzuu = Number(prompt('몇명 참가하노')); console.log($ninnzuu);
+  
+  let $number = document.querySelector('#number');
+  let $jesi = document.querySelector('#jesi');
+  let $input = document.querySelector('#input');
+  let $form = document.querySelector('#form');
+  let $btn = document.querySelector('#btn');
+  let $tanngo='';
+  let jesia='';
+
+  $form.addEventListener('submit',(e)=>{
+    
+   e.preventDefault();
+   $input.value = '';
+   $form.focus();
+   if (!jesia) {
+    console.log('실행중');
+    jesia = $tanngo;
+    document.querySelector('#jesi').innerHTML = jesia;
+
+  }
+  })
+  
+  $input.addEventListener('input',(e)=>{
+    $tanngo = e.currentTarget.value;
+    console.log($tanngo);
+    
+  })
+
+
+ 
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
