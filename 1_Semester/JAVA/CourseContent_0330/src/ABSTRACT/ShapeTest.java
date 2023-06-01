@@ -1,7 +1,5 @@
 package ABSTRACT;
 
-import javax.swing.plaf.synth.SynthColorChooserUI;
-
 public abstract class ShapeTest {
   private int x;
   private int y;

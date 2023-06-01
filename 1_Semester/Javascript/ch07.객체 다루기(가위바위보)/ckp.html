@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,39 +10,54 @@
     #computer {
       width: 142px;
       height: 200px;
-    }    
+    }
   </style>
 </head>
+
+
+
 <body>
+
+  <!-- 1. computer -->
   <div id="computer"></div>
 
+  <!-- 2 btns-->
   <div>
     <button id="scissors" class="btn">가위</button>
     <button id="rock" class="btn">바위</button>
     <button id="paper" class="btn">보</button>
   </div>
 
+  <!-- 3. score -->
   <div id="score">
   </div>
 
+
+
+
   <script>
+
     const $computer = document.querySelector('#computer');
     const $score = document.querySelector('#score');
+
     const $rock = document.querySelector('#rock');
     const $scissors = document.querySelector('#scissors');
     const $paper = document.querySelector('#paper');
+
+
     const IMG_URL = './img/rsp.png';
 
-/*     const scissorsX = '0';
-    const rockX = '-220px';
-    const paperX = '-440px'; */
+    /*     const scissorsX = '0';
+        const rockX = '-220px';
+        const paperX = '-440px'; */
     // ===> 객체로 표현
     const rspX = {
-      scissors:'0',   // key:value
-      rock:'-220px',
-      paper:'-440px',
-    };    
+      scissors: '0',   // key:value
+      rock: '-220px',
+      paper: '-440px',
+    };
 
+    /*📌  1 . 재귀함수 */
     let computerChoice = 'scissors'; // 가위
     /* const changeComputerHand = () =>{
       if(computerChoice === 'rock'){
@@ -55,43 +71,142 @@
       $computer.style.background = `url(${IMG_URL}) ${rspX[computerChoice]} 0`;
       //$computer.style.background = `url(${IMG_URL}) ${scissorsX} 0`;
       $computer.style.backgroundSize = 'auto 200px'; // width, height
+      
+      //  재귀호출
       setTimeout(changeComputerHand,500); // 0.05초에 changeComputerHand()호출
-      // 재귀호출
     };
     
     setTimeout(changeComputerHand,500); */
+    // /1 . 재귀함수 
 
-    const changeComputerHand = () =>{
-      if(computerChoice === 'rock'){
+    /* 📌📌 2. 1의 재귀 함수를 이렇게 setInterval로 대체  */
+    const changeComputerHand = () => {
+      if (computerChoice === 'rock') {
         computerChoice = 'scissors';
         //$computer.style.background = `url(${IMG_URL}) ${scissorsX} 0`;
-      }else if(computerChoice === 'scissors'){
+      } else if (computerChoice === 'scissors') {
         computerChoice = 'paper';
-      }else if(computerChoice === 'paper'){
+      } else if (computerChoice === 'paper') {
         computerChoice = 'rock';
       }
       $computer.style.background = `url(${IMG_URL}) ${rspX[computerChoice]} 0`;
       //$computer.style.background = `url(${IMG_URL}) ${scissorsX} 0`;
       $computer.style.backgroundSize = 'auto 200px'; // width, height
     };
-    
-    let intervalId = setInterval(changeComputerHand,500);
 
-    const clickBtn = (e)=>{
+    // 0.5 초 간격으로 changeComputerHand함수 실행
+    let intervalId = setInterval(changeComputerHand, 50);
+    // /2. 1의 재귀 함수를 이렇게 setInterval로 대체  
+
+
+
+    /* 🟢첫 번째 해결 방법 */
+    /* const clickBtn = (e) => {
       clearInterval(intervalId);
+      $scissors.removeEventListener('click', clickBtn); // 클릭 이벤트 핸들러 취소 
+      $rock.removeEventListener('click', clickBtn);
+      $paper.removeEventListener('click', clickBtn);
 
-      setTimeout(()=>{intervalId = setInterval(changeComputerHand,500);},2000);
+      setTimeout(() => {  
+        //  위에서 지웠던거 다시 붙여줘야 버튼 누르고 난 후에 다시 움직인다.
+        $scissors.addEventListener('click', clickBtn);  // 클릭 이벤트 핸들러 등록
+        $rock.addEventListener('click', clickBtn);
+        $paper.addEventListener('click', clickBtn);
 
+        intervalId = setInterval(changeComputerHand, 500);
+      }, 2000);
     };
-    $scissors.addEventListener('click',clickBtn);
-    $rock.addEventListener('click',clickBtn);
-    $paper.addEventListener('click',clickBtn);
 
 
-    
+    $scissors.addEventListener('click', clickBtn); // 클릭 이벤트 핸들러 등록 
+    $rock.addEventListener('click', clickBtn);
+    $paper.addEventListener('click', clickBtn); */
 
+
+
+    /* 🟢두 번째 해결 방법 */
+    let flagClickable = true;
+
+     /* 🟢🟢🟢🟢🟢🟢🟢 */ 
+    const scoreTable = {
+      rock:0,       
+      scissors:1,      
+      paper:-1,        
+    }
+
+
+    let score = 0;
+    const clickBtn = (e) => {
+      //  flagClickable === true
+      if (flagClickable) {  // 이렇게 flag를 이용해서 조절할 수도 있다. 
+        flagClickable = false;
+        clearInterval(intervalId);
+
+        const myChoice = e.target.textContent === '가위'
+          ? 'scissors'
+          : e.target.textContent === '바위'
+            ? 'rock'
+            : 'paper'; // 중첩 조건 연산자
+
+        // p.297 내용 구현 : 승패 여부 표시 가능
+
+        // 분석 : 승패 점수화 
+        // 가위: 1, 바위: 0, 보: -1
+        // 내선택 - 컴퓨터 선택 : -2 ~ 2 까지 나타난다
+
+        /* 
+            나/컴퓨터   가위   바위   보
+              가위      0       1     2 
+              바위     -1       0     1
+              보       -2      -1     0
+
+            이김 : 2 , -1
+            비김 : 0
+            패배 : 1 , -2
+              
+        */
+        /* 🟢🟢🟢🟢🟢🟢🟢 */ 
+        const myScore = scoreTable[myChoice]; // . 처리를 하면 에러 !!!! myChoice라는 멤버가 없기 떄문
+        const computerScore = scoreTable[computerChoice]
+        const diff = myScore - computerScore;
+
+        /* if (diff===2 || diff===-1) {console.log('마 이깄네 축하한다');} // if ([2,-1].includes(diff))
+        else if(diff===-2 || diff===1){console.log('마 짓네 머하노');}
+        else {console.log('비깄네');} */
+
+      
+        let msg = '';
+
+        if ([2,-1].includes(diff)){
+          // 이김 
+          score++;
+          msg='이깄네 축하한당';
+        } else if ([-2,1].includes(diff)) {
+          // 패배
+          score--;
+          msg='짓네 머하노';
+        } else {
+          msg='무승부!';
+        }
+
+
+        $score.textContent = `${msg} 총:${score}점`;
+
+
+        setTimeout(() => {
+          flagClickable = true;
+          intervalId = setInterval(changeComputerHand, 50);
+        }, 1000);
+      }
+    };
+
+
+    $scissors.addEventListener('click', clickBtn); // 클릭 이벤트 핸들러 등록 
+    $rock.addEventListener('click', clickBtn);
+    $paper.addEventListener('click', clickBtn);
 
   </script>
-  
+
 </body>
+
 </html>

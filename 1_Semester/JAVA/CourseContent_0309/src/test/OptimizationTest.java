@@ -22,7 +22,9 @@ public class OptimizationTest {
 
 		System.out.println(result);
 
-		result = s3.equals(s1); // 문자열을 대소문자 구분 없이 비교
+
+
+		/* result = s3.equals(s1); // 문자열을 대소문자 구분 없이 비교
 		System.out.println(result);
 
 		s1 = new String("i love betty");
@@ -35,7 +37,7 @@ public class OptimizationTest {
 		String a = "111";
 		String b = "111";
 		boolean isSame = a == b;
-
+ */
 		/*Answer 1.
 
 		  isSame이 true인 이유는, Java에서 String 클래스의 == 연산자는 참조 비교를 수행하기 때문입니다. 즉, a와 b가 모두

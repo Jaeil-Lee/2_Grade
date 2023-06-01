@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #screen {
+      width: 300px;
+      height: 200px;
+      text-align: center;
+      user-select: none;
+      line-height: 200px;
+
+    }
+    #screen:active{
+      font-size:10px;
+    }
+
+    #screen.waiting {
+      background-color: rgb(73, 97, 255);
+      
+    }
+
+    #screen.ready {
+      background-color: red;
+      color: white;
+    }
+
+    #screen.now {
+      background-color: greenyellow;
+    }
+  </style>
+</head>
+
+<body> <!-- ---------------------------------------------------------------------------------- -->
+  
+  <div id="screen" class="waiting">클릭해서 시작하세요</div>
+  <div id="result"></div>
+
+  <script>
+    /* 1. 변수  */
+    const $screen = document.querySelector('#screen');
+    const $result = document.querySelector('#result');
+
+    /* 2. getRNum(n,m): n이상 m이하 */
+    const getRNum = (n, m) => Math.floor( 
+                                          Math.random() * 
+                                          (m-n+ 1) 
+                                        ) +n;
+
+    let startTime;
+    let endtTime;
+    const records = [];
+
+
+    /* 3. 🟢 스크린 🟢 */
+    $screen.addEventListener(
+      'click',(event)=>{
+        // 대기중 : 파란색
+        if ($screen.classList.contains('waiting')) {
+          // console.log('waiting');
+          // $screen.classList.remove('waiting');
+          // $screen.classList.add('ready');
+
+          //  replace를 사용하면 이렇게 한방에 바꿀 수 있다
+          $screen.classList.replace('waiting','ready');  
+          $screen.textContent='초록색이되면 클릭하세요';
+
+          timerId = setTimeout(() => {
+            startTime = new Date(); // 기념일 어플 만들때 사용하면 어떨까???  
+            $screen.classList.replace('ready','now')
+            $screen.textContent='클릭하세요';
+          }, getRNum(2000,3000));
+        }
+        // 준비 : 빨간색
+        else if ($screen.classList.contains('ready')){
+          clearTimeout(timerId);
+          $screen.classList.remove('ready');
+          $screen.classList.add('waiting');
+          $screen.textContent= '마 천천히 눌러라 ! 머하노 정신 안 차리고';
+        }
+        // 클릭 측정화면 : 초록색
+        else if ($screen.classList.contains('now')){
+          endtTime = new Date(); // 끝나는 시간 측정
+
+          const currentTime = endtTime-startTime;
+          records.push(currentTime);
+          const average = records.reduce((누적,현재)=>누적+현재) / records.length;
+          startTime=null;
+          endtTime=null;
+
+          /* innerHTML을 사용하면 태그를 반영 시킬 수 있다!!! */
+          $result.innerHTML = `❤️반응속도: ${currentTime}ms , 🎖️<b>평균 반응속도: ${average}ms</b>`;
+          // $result.textContent = `❤️반응속도: ${currentTime}ms , 🎖️평균 반응속도: ${average}ms`;
+          // $result.innerText = `❤️반응속도: ${currentTime}ms , 🎖️평균 반응속도: ${average}ms`;
+
+          $screen.classList.remove('now');
+          $screen.classList.add('waiting');
+          $screen.textContent = `클릭해서 시작하기`;
+        }
+      }
+    );
+  </script>
+
+</body> <!-- ---------------------------------------------------------------------------------- -->
+
+</html>

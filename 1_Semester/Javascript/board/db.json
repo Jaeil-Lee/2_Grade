@@ -1,0 +1,94 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "writer": "typicode",
+      "content": "test content입니다.",
+      "createdAt": "2023.05.11 16:20:32",
+      "hit": 1
+    },
+    {
+      "id": 2,
+      "title": "json-server1",
+      "writer": "typicode1",
+      "content": "dfdfdf잘봐라 content입니다.",
+      "createdAt": "2023.05.11 17:25:32",
+      "hit": 1
+    },
+    {
+      "title": "테스트",
+      "writer": "일본아이티반",
+      "content": "화이팅, 화이토!",
+      "createdAt": "2023-05-11T08:50:41.719Z",
+      "hit": 0,
+      "id": 3
+    },
+    {
+      "title": "ㅁㄴㅇㅍㄴㅇ",
+      "writer": "ㄴㅁㅇㅍㄴㅁㅇㅍ",
+      "content": "ㄴㅇㅍ",
+      "createdAt": "2023-05-26T09:49:42.832Z",
+      "hit": 0,
+      "id": 4
+    },
+    {
+      "title": "이재일 소뱅 합격!",
+      "writer": "",
+      "content": "",
+      "createdAt": "2023-05-26T09:50:09.078Z",
+      "hit": 0,
+      "id": 5
+    },
+    {
+      "title": "이재일 2관왕",
+      "writer": "２ｊ１",
+      "content": "ご応募",
+      "createdAt": "2023-05-26T09:51:46.076Z",
+      "hit": 0,
+      "id": 6
+    },
+    {
+      "title": "ㅇㄴㅁㄻㄴㄹ",
+      "writer": "ㅁㅇㄴㄻㄴㅇㄹ",
+      "content": "ㅁㄹㄴㅇ",
+      "createdAt": "2023-05-26T10:27:36.687Z",
+      "hit": 0,
+      "id": 7
+    },
+    {
+      "title": "ㄷㅈㄹ",
+      "writer": "ㅈㄷㄹㅈㄷㄹ",
+      "content": "ㅈㄷㅈㄷㄹ",
+      "createdAt": "2023-05-26T10:27:57.968Z",
+      "hit": 0,
+      "id": 8
+    },
+    {
+      "title": "1111111",
+      "writer": "111111",
+      "content": "1111111111",
+      "createdAt": "2023-05-26T10:28:56.533Z",
+      "hit": 0,
+      "id": 9
+    },
+    {
+      "title": "11",
+      "writer": "11",
+      "content": "1",
+      "createdAt": "2023-05-26T10:43:41.925Z",
+      "hit": 0,
+      "id": 10
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

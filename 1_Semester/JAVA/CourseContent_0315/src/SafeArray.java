@@ -1,10 +1,12 @@
 public class SafeArray {
   private int[] a;
 
+  // １．Array 생성 메서드
   public void createArray(int size) {
     a = new int[size];
   }
 
+  // ２．index get 생성 메서드
   public int get(int index) {
     if (index >=0 && index < a.length) 
       return a[index];
@@ -12,6 +14,7 @@ public class SafeArray {
     return -1;
   }
 
+  // ３．index・value , put 생성 메서드 
   public void put(int index, int value) {
     if (index >=0 && index < a.length) {
       a[index] = value;
