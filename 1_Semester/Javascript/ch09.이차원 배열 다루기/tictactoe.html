@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2차원 배열 다루기</title>
+  <style>
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: atuo 0;
+    }
+  
+    td {
+      border: 10px solid black;
+      width: 150px;
+      height: 150px;
+      font-size: 80px;
+      text-align: center;
+    }
+  </style>
+</head>
+<!-- ----------------------------------------------------- < TODO: body >----------------------------------------------------- -->
+<body>
+
+ <!-- <table>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table> -->
+
+
+<!-- -----------------------------------------------------<FIXME:script>----------------------------------------------------- -->
+   <script>
+    // const $td00 = document.querySelector('.#td00')
+    // $td00.addEventListener('click',()=>{});   9개....
+
+    const{body} = document; // 구조분해 할당 -> body 상수에는 body 태그 엘리먼트 객체가 할당된다
+
+    const rows = [];
+
+    const $table = document.createElement('table'); // <table> </table>
+    const $result = document.createElement('div'); //  <div> </div>
+
+    let turn = '⭕'// 'O' 또는 'X'
+
+
+
+
+    const checkWinner = (target)=>{
+    let rowIdx;
+    let columnIdx;
+
+    // /* rows_Value: rows의  하나의 요소 값 , rows_index: rows의 인덱스  */
+    // rows.forEach(( rows_Value , rows_index )=>{
+      
+    //   /* columns_Value: rows의  하나의 요소 값 , columns_index: rows의 인덱스  */
+    //   rows_Value.forEach(( columns_Value , columns_index ) => {
+    //     if (columns_Value == target) {
+    //       rowIdx = rows_index;
+    //       coumnIdx = coumns_index;
+    //       }
+    //     });
+    //   });
+    // };
+
+    rowIdx = target.parentNode.rowIndex;    
+    columnIdx = target.cellIndex;
+
+    console.log(target.parentNode);
+
+    console.log(target.parentNode.children);
+
+
+    let hasWinner = false;
+    if(rows[rowIdx][0].textContent===turn &&
+       rows[rowIdx][1].textContent===turn &&
+       rows[rowIdx][2].textContent===turn){
+        hasWinner = true;
+    }
+
+    if(rows[0][columnIdx].textContent===turn &&
+       rows[1][columnIdx].textContent===turn &&
+       rows[2][columnIdx].textContent===turn){
+        hasWinner = true;
+    }
+
+    if(rows[0][0].textContent===turn &&
+       rows[1][1].textContent===turn &&
+       rows[2][2].textContent===turn){
+        hasWinner = true;
+    }
+
+    if(rows[0][2].textContent===turn &&
+       rows[1][1].textContent===turn &&
+       rows[2][0].textContent===turn){
+        hasWinner = true;
+    }
+    return hasWinner;
+  };
+
+
+
+
+
+
+
+    /* 🟢콜백함수 */
+    const cEventListenerFunc = (event) =>{ 
+      // event.prevemtDefault();
+      if (event.target.textContent !=='') {
+        console.log('빈칸이 아님');
+        return;
+      }  
+
+      console.log('빈칸');
+      event.target.textContent = turn; 
+
+      const hasWinner = checkWinner(event.target);
+      if(hasWinner){
+        $result.textContent = `${turn}님이 승리함!!!`;
+        $table.removeEventListener('click',cEventListenerFunc);
+        return;
+      }
+      turn = turn === '⭕' ? '❌' : '⭕';  // 
+      
+    };
+
+
+    /* ⭐⭐⭐⭐⭐⭐⭐시험⭐⭐⭐⭐⭐⭐⭐ */
+
+    /* 행 */
+    for ( let i = 1; i <= 3; i++ ) {
+      // <tr></tr>
+      const $tr = document.createElement('tr'); // 1번 실행이 되니 반복문안에 넣고 계속 생성되도록 하는 것이다.
+      const columns = [];
+
+      /* 열 */
+      for ( let j = 1; j <= 3; j++ ) {
+        // <td></td>
+        const $td = document.createElement('td'); // 1번 실행이 되니 반복문안에 넣고 계속 생성되도록 하는 것이다.
+
+        columns.push($td);
+        // console.log(columns);
+
+        //$tr.addEventListener('click',cEventListenerFunc);
+
+
+        $tr.appendChild($td);
+        // j:1 <tr><td></td></tr> j:2 <tr><td></td><td></td></tr> 
+        // j:3 <tr><td></td><td></td><td></td></tr> 
+    }
+
+      rows.push(columns);
+      // console.log(rows);
+      $table.appendChild($tr);
+      $table.addEventListener('click',cEventListenerFunc);
+
+    }
+
+    /* IMPORTANT: table body에 집어 넣기  */
+    body.appendChild($table);
+
+
+
+
+
+
+  </script>
+<!-- -----------------------------------------------------<FIXME:script>----------------------------------------------------- -->
+  
+</body>
+</html>
