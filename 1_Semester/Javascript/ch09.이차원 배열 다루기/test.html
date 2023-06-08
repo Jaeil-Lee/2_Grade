@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: atuo 0;
+    }
+  
+    td {
+      border: 10px solid black;
+      width: 150px;
+      height: 150px;
+      font-size: 80px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+    const{body} = document; // 구조분해 할당 -> body 상수에는 body 태그 엘리먼트 객체가 할당된다
+
+    const rows = [];
+
+    const $table = document.createElement('table'); // <table> </table>
+    const $result = document.createElement('div'); //  <div> </div>
+    let turn = '⭕'// 'O' 또는 'X'
+    for ( let i = 1; i <= 3; i++ ) {
+      // <tr></tr>
+      const $tr = document.createElement('tr'); // 1번 실행이 되니 반복문안에 넣고 계속 생성되도록 하는 것이다.
+      const columns = [];
+
+      /* 열 */
+      for ( let j = 1; j <= 3; j++ ) {
+        // <td></td>
+        const $td = document.createElement('td'); // 1번 실행이 되니 반복문안에 넣고 계속 생성되도록 하는 것이다.
+
+        columns.push($td);
+        // console.log(columns);
+
+        //$tr.addEventListener('click',cEventListenerFunc);
+
+
+        $tr.appendChild($td);
+        // j:1 <tr><td></td></tr> j:2 <tr><td></td><td></td></tr> 
+        // j:3 <tr><td></td><td></td><td></td></tr> 
+       }
+
+       rows.push(columns);
+        // console.log(rows);
+        $table.appendChild($tr);
+        $table.addEventListener('click',cEventListenerFunc);
+     }
+</script>
+
+
+</body>
+</html>

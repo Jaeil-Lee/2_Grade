@@ -66,61 +66,65 @@
 
 
 
-
+    /* checkWinner 콜백함수 */
     const checkWinner = (target)=>{
-    let rowIdx;
-    let columnIdx;
+        let rowIdx;
+        let columnIdx;
 
-    // /* rows_Value: rows의  하나의 요소 값 , rows_index: rows의 인덱스  */
-    // rows.forEach(( rows_Value , rows_index )=>{
-      
-    //   /* columns_Value: rows의  하나의 요소 값 , columns_index: rows의 인덱스  */
-    //   rows_Value.forEach(( columns_Value , columns_index ) => {
-    //     if (columns_Value == target) {
-    //       rowIdx = rows_index;
-    //       coumnIdx = coumns_index;
-    //       }
-    //     });
-    //   });
-    // };
-
-    rowIdx = target.parentNode.rowIndex;    
-    columnIdx = target.cellIndex;
-
-    console.log(target.parentNode);
-
-    console.log(target.parentNode.children);
+        // /* rows_Value: rows의  하나의 요소 값 , rows_index: rows의 인덱스  */
+        // rows.forEach(( rows_Value , rows_index )=>{
+          
+        //   /* columns_Value: rows의  하나의 요소 값 , columns_index: rows의 인덱스  */
+        //   rows_Value.forEach(( columns_Value , columns_index ) => {
+        //     if (columns_Value == target) {
+        //       rowIdx = rows_index;
+        //       coumnIdx = coumns_index;
+        //       }
+        //     });
+        //   });
+        // };
+        
+        rowIdx = target.parentNode.rowIndex;    
+        columnIdx = target.cellIndex;
+        // 위와같이 인덱스를 사용하면 반복문을 돌려가며 찾지 않아도 된다.
 
 
-    let hasWinner = false;
-    if(rows[rowIdx][0].textContent===turn &&
-       rows[rowIdx][1].textContent===turn &&
-       rows[rowIdx][2].textContent===turn){
-        hasWinner = true;
-    }
+        /*
+          console.log(target.parentNode);
+          console.log(target.parentNode.children);  // HTMLCollection data type
+          console.log(Array.from(target.parentNode.children));  
+          console.log(Array.from(target.parentNode.children).indexOf(target)); 
+        */
+        console.log(target.parentNode.childNodes); // NodeList
 
-    if(rows[0][columnIdx].textContent===turn &&
-       rows[1][columnIdx].textContent===turn &&
-       rows[2][columnIdx].textContent===turn){
-        hasWinner = true;
-    }
 
-    if(rows[0][0].textContent===turn &&
-       rows[1][1].textContent===turn &&
-       rows[2][2].textContent===turn){
-        hasWinner = true;
-    }
 
-    if(rows[0][2].textContent===turn &&
-       rows[1][1].textContent===turn &&
-       rows[2][0].textContent===turn){
-        hasWinner = true;
-    }
-    return hasWinner;
+        let hasWinner = false;
+        if(rows[rowIdx][0].textContent===turn &&
+          rows[rowIdx][1].textContent===turn &&
+          rows[rowIdx][2].textContent===turn){
+            hasWinner = true;
+        }
+
+        if(rows[0][columnIdx].textContent===turn &&
+          rows[1][columnIdx].textContent===turn &&
+          rows[2][columnIdx].textContent===turn){
+            hasWinner = true;
+        }
+
+        if(rows[0][0].textContent===turn &&
+          rows[1][1].textContent===turn &&
+          rows[2][2].textContent===turn){
+            hasWinner = true;
+        }
+
+        if(rows[0][2].textContent===turn &&
+          rows[1][1].textContent===turn &&
+          rows[2][0].textContent===turn){
+            hasWinner = true;
+        }
+        return hasWinner;
   };
-
-
-
 
 
 
@@ -142,6 +146,27 @@
         $table.removeEventListener('click',cEventListenerFunc);
         return;
       }
+
+
+        /* 무승부  */
+      // let draw = true; // 무승부 여부를 저장하는 flag변수
+      // rows.forEach((row,rIdx)=>{
+      //   row.forEach((col,cIdx) => {
+      //     // ⭐⭐⭐ 빈칸이 아니면 false ⭐⭐⭐ [ 시험 ]
+      //     if (!col.textContent) {
+      //       draw=false;
+      //     }
+      //   });
+      // })
+
+      const draw = rows.flat().every((col, index)=>{return col.textContent;});
+      // 배열명.some(콜백);
+
+      if(draw){
+          $result.textContent = `무승부!`;
+          return;
+      }
+
       turn = turn === '⭕' ? '❌' : '⭕';  // 
       
     };
@@ -169,22 +194,21 @@
         $tr.appendChild($td);
         // j:1 <tr><td></td></tr> j:2 <tr><td></td><td></td></tr> 
         // j:3 <tr><td></td><td></td><td></td></tr> 
-    }
+      }
 
-      rows.push(columns);
-      // console.log(rows);
+      rows.push(columns); 
+      //console.log(rows);
       $table.appendChild($tr);
       $table.addEventListener('click',cEventListenerFunc);
 
     }
 
-    /* IMPORTANT: table body에 집어 넣기  */
-    body.appendChild($table);
 
-
-
-
-
+    // body.appendChild($table);
+    // body.appendChild($result);
+    
+    // 위 내용을 이렇게 한 줄로 표현 가능하다
+    body.append($table,$result)
 
   </script>
 <!-- -----------------------------------------------------<FIXME:script>----------------------------------------------------- -->
