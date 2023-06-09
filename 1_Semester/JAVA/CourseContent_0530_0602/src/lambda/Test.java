@@ -199,6 +199,7 @@ public class Test {
     /*  🟢 문제  -  메소드 하나 구현 🟢
     List<Person List , int Low , int hight
     위 세개의 매개변수를 통해 Person 객체 리스트와 , 나이의 범위 (Low 이상 ,hight 미만)를
+    입력으로 받아, 저 나이 범이의 person 정보만 출력하는
     printPersonsWithinAgeRange를 통해 구현   */
     public static void printPersonsWithinAgeRange(List<Person> list, int low, int hight) {
       for (Person p : list) {

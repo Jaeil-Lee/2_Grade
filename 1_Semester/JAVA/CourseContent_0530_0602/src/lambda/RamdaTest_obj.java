@@ -34,6 +34,4 @@ class SumFunction {
       return result;
   }
 
-
-
 }

@@ -24,25 +24,29 @@ public class CollectionTest2 {
 
       System.out.println("------------------------------------------------------------");
 
-      HashMap<String,ArrayList<String>> teams = new HashMap<>();
+      HashMap< String, ArrayList<String> > teams = new HashMap<>(); // 매개변수로 반드시 참조형이 와야한다.
+      
+      /* ArrayList에는 add로 추가  */
       ArrayList<String> team1 = new ArrayList<>();
       team1.add("이종열");
       team1.add("이현숙");
       team1.add("이규석");
       team1.add("이아현");
       team1.add("이지민");
-
+      
+      /* ArrayList에는 add로 추가  */
       ArrayList<String> team2 = new ArrayList<>();
       team2.add("이동열");
       team2.add("박지헌");
       team2.add("이진혁");
       team2.add("이예랑");
 
-
+       /*  hashMap은 put으로 넣기 */
       teams.put("이종열네",team1);
       teams.put("이동열네",team2);
 
       printTeamMember("이동열네",teams);
+      printTeamMember("이종열네",teams);
    }
 
   public static void printTeamMember(String teamName, HashMap<String,ArrayList<String>> teams) {
