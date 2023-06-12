@@ -37,20 +37,23 @@
 
   <script>
 
-    const $computer = document.querySelector('#computer');
-    const $score = document.querySelector('#score');
-
+    const $computer = document.querySelector('#computer'); // 컴퓨터 묵찌빠 이미지  ( 졸라 빠르게 돌아가는 그 이미지)
+     
     const $rock = document.querySelector('#rock');
     const $scissors = document.querySelector('#scissors');
     const $paper = document.querySelector('#paper');
-
-
-    const IMG_URL = './img/rsp.png';
+    
+    const $score = document.querySelector('#score');   /// 밑에 점수
+    
+    const IMG_URL = './img/rsp.png';   // 이미지 url
 
     /*     const scissorsX = '0';
         const rockX = '-220px';
         const paperX = '-440px'; */
-    // ===> 객체로 표현
+        
+
+
+    // ===> 객⭐체로 표현⭐
     const rspX = {
       scissors: '0',   // key:value
       rock: '-220px',
@@ -79,7 +82,7 @@
     setTimeout(changeComputerHand,500); */
     // /1 . 재귀함수 
 
-    /* 📌📌 2. 1의 재귀 함수를 이렇게 setInterval로 대체  */
+    /* 📌📌 2. 1의 재귀 함수를 이렇게 setInterval로 대체  */  // 묵찌빠 바꾸기만 하지 , 시간적인 개념은 없다. 단순히 묵찌빠만 바꿈 1회적으로 
     const changeComputerHand = () => {
       if (computerChoice === 'rock') {
         computerChoice = 'scissors';
@@ -88,13 +91,13 @@
         computerChoice = 'paper';
       } else if (computerChoice === 'paper') {
         computerChoice = 'rock';
-      }
+      }                                              // ⭐⭐⭐⭐⭐⭐⭐⭐
       $computer.style.background = `url(${IMG_URL}) ${rspX[computerChoice]} 0`;
       //$computer.style.background = `url(${IMG_URL}) ${scissorsX} 0`;
       $computer.style.backgroundSize = 'auto 200px'; // width, height
     };
 
-    // 0.5 초 간격으로 changeComputerHand함수 실행
+    // ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐0.5 초 간격으로 changeComputerHand함수 실행 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
     let intervalId = setInterval(changeComputerHand, 50);
     // /2. 1의 재귀 함수를 이렇게 setInterval로 대체  
 
@@ -102,10 +105,10 @@
 
     /* 🟢첫 번째 해결 방법 */
     /* const clickBtn = (e) => {
-      clearInterval(intervalId);
-      $scissors.removeEventListener('click', clickBtn); // 클릭 이벤트 핸들러 취소 
-      $rock.removeEventListener('click', clickBtn);
-      $paper.removeEventListener('click', clickBtn);
+        clearInterval(intervalId);     => 101 라인 = let intervalId = setInterval(changeComputerHand, 50);
+        $scissors.removeEventListener('click', clickBtn); // 클릭 이벤트 핸들러 취소 
+        $rock.removeEventListener('click', clickBtn);
+        $paper.removeEventListener('click', clickBtn);
 
       setTimeout(() => {  
         //  위에서 지웠던거 다시 붙여줘야 버튼 누르고 난 후에 다시 움직인다.
@@ -118,9 +121,9 @@
     };
 
 
-    $scissors.addEventListener('click', clickBtn); // 클릭 이벤트 핸들러 등록 
-    $rock.addEventListener('click', clickBtn);
-    $paper.addEventListener('click', clickBtn); */
+    // $scissors.addEventListener('click', clickBtn); // 클릭 이벤트 핸들러 등록 
+    // $rock.addEventListener('click', clickBtn);
+    // $paper.addEventListener('click', clickBtn); */
 
 
 
@@ -142,9 +145,7 @@
         flagClickable = false;
         clearInterval(intervalId);
 
-        const myChoice = e.target.textContent === '가위'
-          ? 'scissors'
-          : e.target.textContent === '바위'
+        const myChoice = e.target.textContent === '가위' ? 'scissors' : e.target.textContent === '바위'
             ? 'rock'
             : 'paper'; // 중첩 조건 연산자
 
@@ -155,16 +156,13 @@
         // 내선택 - 컴퓨터 선택 : -2 ~ 2 까지 나타난다
 
         /* 
-            나/컴퓨터   가위   바위   보
-              가위      0       1     2 
-              바위     -1       0     1
+            나/컴퓨터   가위   바위   보            이김 : 2 , -1
+              가위      0       1     2            비김 : 0
+              바위     -1       0     1            패배 : 1 , -2
               보       -2      -1     0
-
-            이김 : 2 , -1
-            비김 : 0
-            패배 : 1 , -2
-              
         */
+
+        
         /* 🟢🟢🟢🟢🟢🟢🟢 */ 
         const myScore = scoreTable[myChoice]; // . 처리를 하면 에러 !!!! myChoice라는 멤버가 없기 떄문
         const computerScore = scoreTable[computerChoice]
@@ -173,7 +171,6 @@
         /* if (diff===2 || diff===-1) {console.log('마 이깄네 축하한다');} // if ([2,-1].includes(diff))
         else if(diff===-2 || diff===1){console.log('마 짓네 머하노');}
         else {console.log('비깄네');} */
-
       
         let msg = '';
 
@@ -198,6 +195,9 @@
           intervalId = setInterval(changeComputerHand, 50);
         }, 1000);
       }
+
+
+
     };
 
 

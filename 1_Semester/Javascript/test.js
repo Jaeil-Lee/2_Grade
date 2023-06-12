@@ -1,19 +1,18 @@
-// const candidate = Array(45).fill().map((v, i) => i + 1);
-// console.log(candidate)
-// console.log(candidate.splice(3,1))
+let ransu = Array(45).fill(0).map((e,i)=>{return i+1 })
 
-const { body } = document;
-const $table = document.createElement('table');
-const $result = document.createElement('div'); // 결과창
-const rows = [];
-for (let i = 1; i <= 5; i++) {
- const $tr = document.createElement('tr');
- const cells = [];
- for (let j = 1; j <= 4; j++) {
- const $td = document.createElement('td');
- cells.push($td);
- $tr.appendChild($td);
- }
- rows.push(cells);
- $table.appendChild($tr);
+console.log(ransu);
+
+let shuffle = [];
+
+while(ransu.length>0){
+  let randomIndex = Math.floor(Math.random()*ransu.length) 
+  let contain = ransu.splice(randomIndex,1);
+  let result = contain[0];
+  shuffle.push(result);
+}
+
+console.log(shuffle)
+
+function betty () {
+  
 }
