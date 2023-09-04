@@ -1,10 +1,10 @@
 package generic;
-import java.util.ArrayList;
+import java.util.*;
 
 /* ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ ArrayList 이거 시험⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐   */
 public class CollectionTest {
   public static void main(String[] args) {
-    ArrayList<String> names = new ArrayList<>();
+    List<String> names = new ArrayList<>();
     names.add("이재일");
     names.add("김지수");
     names.add("betty");

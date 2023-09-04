@@ -9,10 +9,10 @@ public class Person {
   private String name;
   private LocalDate birthDate;
   private String emailAddress;
-  private Sex gender;
+  private Sex_enum gender;
 
   // 생성자 
-  public Person(String name, LocalDate birthDate, String emailAddress, Sex gender) {
+  public Person(String name, LocalDate birthDate, String emailAddress, Sex_enum gender) {
     this.name = name;
     this.birthDate = birthDate;
     this.emailAddress = emailAddress;
@@ -32,7 +32,7 @@ public class Person {
     return emailAddress;
   }
 
-  public Sex getGender() {
+  public Sex_enum getGender() {
     return gender;
   }
 

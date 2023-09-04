@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: atuo 0;
+    }
+
+    td {
+      border: 10px solid black;
+      width: 150px;
+      height: 150px;
+      font-size: 80px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <script>
+
+
+   const {body} = document;
+    const $table = document.createElement('table');
+
+    for (let row = 0; row < 3; row++) {
+      const $tr = document.createElement('tr');
+
+      for (let col = 0; col < 3; col++) {
+        const $td = document.createElement('td');
+        $tr.appendChild($td);
+      }
+      $table.appendChild($tr);
+    }
+    body.appendChild($table);
+
+
+    $table.addEventListener('click',(e)=>{
+      console.log('('+e.target.parentNode.rowIndex+','+e.target.cellIndex+')');
+      console.log(e.target.parentNode);
+      console.log(e.target.parentNode.children);
+      console.log(Array.from(e.target.parentNode.children).indexOf(e.currentTarget));
+      e.target.style.backgroundColor='red';
+    })
+
+
+  </script>
+</body>
+
+</html>

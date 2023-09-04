@@ -61,7 +61,7 @@ public class Car implements Comparable{
     // getPrice 메소드를 호출해야되니, 부득이
     // Comparable 타입으로 받은 인자를
     // Car 타입으로 하향 형변환. 
-    // 물로 이 obj 객체는 Car 클래스 타입의 객체이어야만 하고, 
+    // 물론 이 obj 객체는 Car 클래스 타입의 객체이어야만 하고, 
     // 그렇다고 가정한다. 
 
     Car aCar = (Car)obj; // 하향 형 변환 => 왜? 이래야지 Car 에 접근할 수 있다이가

@@ -15,7 +15,7 @@ public class GenericTest {
     /* 2. String */
     GenericBox<String> box2 = new GenericBox<String>();
     box2.setValue("이것은 String으로 생성한 generic CLASS라네");
-    /* 잘 못된 타임의 값을 주면 컴파일 타임 때 그 오류를 잡아 준다 */
+     /* ⭐ 잘못된 타입의 값을 주면 컴파일 타임 때 그 오류를 잡아준다 ⭐ */
     // 🔴 box2.setValue(100);
     String sval = box2.getValue(); // 명시적인 타입 캐스팅이 필요하다
     System.out.println("박스에 저장된 값은["+sval+"]입니다");

@@ -8,6 +8,8 @@ public class GenericTest2 {
     String key = gp.getKey();
     int val = gp.getValue(); // outo unboxing
     
+    System.out.println(key);
+    System.out.println(val);
     /* Generic 클래스의 타입 파라미터 값으로는 반드시 참조형 타입이 와야 한다.
 
     * 기초자료형 (Primitive type)은 절대 올 수 없다. 🔻*/
@@ -16,9 +18,11 @@ public class GenericTest2 {
 
     // 타입 파라미터로 기초 자료형의 배열은 올 수 있나❓❓❓  -> ⭕⭕⭕ 올수 있다  🔻🔻🔻🔻🔻
     int[] jumsus = {90,87,88,79,94};
-    GenericPair<String,int[]> pg3= new GenericPair<String,int[]>("점수임", jumsus); 
+    GenericPair<String,int[]> pg3= new GenericPair<>("점수임", jumsus); 
     
-
+    for (int jumsu : jumsus) {
+      System.out.println(jumsu);
+    }
 
   }
 }

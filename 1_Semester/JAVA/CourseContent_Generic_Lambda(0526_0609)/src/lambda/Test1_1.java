@@ -6,9 +6,9 @@ import java.util.*;
 public class Test1_1 {
   public static void main(String[] args) {
     
-    Person p1 = new Person("고길동", LocalDate.of(2000, 1, 4), "gdhong@gmail.com", Sex.MALE);
-    Person p2 = new Person("일지매", LocalDate.of(1995, 2, 12), "gmil@gmail.com", Sex.FEMALE);
-    Person p3 = new Person("박문수", LocalDate.of(1988, 5, 31), "mspark@gmail.com", Sex.MALE);
+    Person p1 = new Person("고길동", LocalDate.of(2000, 1, 4), "gdhong@gmail.com", Sex_enum.MALE);
+    Person p2 = new Person("일지매", LocalDate.of(1995, 2, 12), "gmil@gmail.com", Sex_enum.FEMALE);
+    Person p3 = new Person("박문수", LocalDate.of(1988, 5, 31), "mspark@gmail.com", Sex_enum.MALE);
 
     // List는 인터페이스, 이 인터페이스를 구현하는 클래스로
     // ArrayList, LinkedList 등이 있다. 
@@ -41,7 +41,7 @@ public class Test1_1 {
     // 클래스 선언과(정의와) 객체생성을 동시에 할 수 있는 방법이 무명클래스 이잖아..
     // printPersons(list, new CheckPerson() {
     //   public boolean test(Person p) {
-    //     return p.getGender() == Sex.MALE;
+    //     return p.getGender() == Sex_enum.MALE;
     //   }
     // });
 
@@ -57,13 +57,13 @@ public class Test1_1 {
     // (type1 arg1, type2 arg2, ...) -> {body}
 
     // 위의 무명클래스를 람다식으로 구현해보자. 
-    // printPersons(list, (p)->{return p.getGender() == Sex.MALE;});
+    // printPersons(list, (p)->{return p.getGender() == Sex_enum.MALE;});
 
-    // printPersons(list, (Person p)->{return p.getGender() == Sex.MALE;});
+    // printPersons(list, (Person p)->{return p.getGender() == Sex_enum.MALE;});
 
     // 람다식의 body가 return 문 하나만으로 구성되어 있으면 return 키워드, {}, 문장 끝의 
     // 세미콜론(;)도 생략할 수 있다. 
-    // printPersons(list, (p)-> p.getGender() == Sex.MALE);
+    // printPersons(list, (p)-> p.getGender() == Sex_enum.MALE);
 
     // printPersons(list, (p)->{
     //   System.out.println(p.getName()); 
@@ -78,7 +78,7 @@ public class Test1_1 {
 
     // 람다식을 이용해서 printPersons 메소드를 호출하고, 
     // 그 결과로 나이 20에서 30살 사이의 여자만 출력되도록 구현하라.
-    printPersons(list, p->p.getGender()==Sex.FEMALE && p.getAge() >= 20 && p.getAge()<=30);
+    printPersons(list, p->p.getGender()==Sex_enum.FEMALE && p.getAge() >= 20 && p.getAge()<=30);
 
   }
 
@@ -130,18 +130,18 @@ interface CheckPerson {/*  */
 
 class CheckPersonMale18to25 implements CheckPerson {
   public boolean test(Person p) {
-    return p.getGender() == Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
+    return p.getGender() == Sex_enum.MALE && p.getAge() >= 18 && p.getAge() <= 25;
   }
 }
 
 class CheckPersonFemale10to20 implements CheckPerson {
   public boolean test(Person p) {
-    return p.getGender() == Sex.FEMALE && p.getAge() >= 10 && p.getAge() <= 20;
+    return p.getGender() == Sex_enum.FEMALE && p.getAge() >= 10 && p.getAge() <= 20;
   }
 }
 
 class CheckMale implements CheckPerson {
   public boolean test(Person p) {
-    return p.getGender() == Sex.MALE;
+    return p.getGender() == Sex_enum.MALE;
   }
 }

@@ -14,14 +14,14 @@ interface CheckPerson {
 // 🟢 문제 1 클래스
 class CheckPersonMale18to25 implements CheckPerson { 
   public boolean test(Person p) {
-    return p.getGender() == Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
+    return p.getGender() == Sex_enum.MALE && p.getAge() >= 18 && p.getAge() <= 25;
   }
 }
 
 // 🟢 문제 2 클래스
 class CheckPersonFemale10to20 implements CheckPerson {
   public boolean test(Person p) {
-    return p.getGender() == Sex.FEMALE && p.getAge() >= 10 && p.getAge() <= 20;
+    return p.getGender() == Sex_enum.FEMALE && p.getAge() >= 10 && p.getAge() <= 20;
   }
 }
 
@@ -33,7 +33,7 @@ printPersons메소드를 호추해라
 */
 class ImprelemtedByCheckPersonForSex implements CheckPerson { 
   public boolean test(Person p) {
-    return p.getGender() == Sex.MALE;  // 성별이 남자인 객체만 반환!!! 
+    return p.getGender() == Sex_enum.MALE;  // 성별이 남자인 객체만 반환!!! 
   }
 }
 
@@ -61,11 +61,11 @@ class ImprelemtedByCheckPersonForSex implements CheckPerson {
 public class Test {
   public static void main(String[] args) {
 
-    Person p1 = new Person("이재일", LocalDate.of(1999, 10, 1), "lji941001@naver.com", Sex.MALE);
-    Person p2 = new Person("김지현", LocalDate.of(2001, 06, 24), "BAE64@naver.com", Sex.FEMALE);
-    Person p3 = new Person("정유미", LocalDate.of(1993, 07, 7), "YOUMI77@naver.com", Sex.FEMALE);
-    Person p4 = new Person("유홍준", LocalDate.of(1994, 5, 31), "hong99@naver.com", Sex.MALE);
-    Person p5 = new Person("한승빈", LocalDate.of(1994, 12, 5), "sungbean12@naver.com", Sex.MALE);
+    Person p1 = new Person("이재일", LocalDate.of(1999, 10, 1), "lji941001@naver.com", Sex_enum.MALE);
+    Person p2 = new Person("김지현", LocalDate.of(2001, 06, 24), "BAE64@naver.com", Sex_enum.FEMALE);
+    Person p3 = new Person("정유미", LocalDate.of(1993, 07, 7), "YOUMI77@naver.com", Sex_enum.FEMALE);
+    Person p4 = new Person("유홍준", LocalDate.of(1994, 5, 31), "hong99@naver.com", Sex_enum.MALE);
+    Person p5 = new Person("한승빈", LocalDate.of(1994, 12, 5), "sungbean12@naver.com", Sex_enum.MALE);
 
     // lIST 만들기! List는 interface
     // => 이 인터페이스를 구현하는 클래스로 ArrayList , LinkedList 등이 있다.
@@ -148,17 +148,17 @@ public class Test {
         // 1.version (타입 arg)
         printPersons(list, (Person p)-> {
           System.out.println("1.version (타입 arg)");
-          return p.getAge() >=20 && p.getAge() <=30 && p.getGender()==Sex.FEMALE; 
+          return p.getAge() >=20 && p.getAge() <=30 && p.getGender()==Sex_enum.FEMALE; 
         });
         // 2.version (arg)
         printPersons(list,  (p)-> {
           System.out.println("2.version (arg)");
-          return p.getAge() >=20 && p.getAge() <=30 && p.getGender()==Sex.FEMALE; 
+          return p.getAge() >=20 && p.getAge() <=30 && p.getGender()==Sex_enum.FEMALE; 
         });
         // 3.version arg     -> 이렇게 arrowFunction 사용하는 것 처럼 사용할 수 있다
         printPersons(list,  p-> {
           System.out.println("3.version arg");
-          return p.getAge() >=20 && p.getAge() <=30 && p.getGender()==Sex.FEMALE; 
+          return p.getAge() >=20 && p.getAge() <=30 && p.getGender()==Sex_enum.FEMALE; 
         });
   }
   

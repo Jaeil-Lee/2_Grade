@@ -8,8 +8,10 @@ public class CallbackTest {
   public static void main(String[] args) {
     /*
      * javax.swing.Timer 클래스의 객체를 생성하기 위해서는
-     * int 타입의 delay, javax.awt.event.ActionListener 인터페이스 타입의 객체를
+     * 1) int 타입의 delay,  
+     * 2) javax.awt.event.ActionListener 인터페이스 타입의 객체를
      * 넘겨줘야 한다. 
+    
      * 두 번째 인자인 저 객체를 넘겨주기 위해서는 아래의 두 가지 방법 중 하나를 사용
      * 하면 된다. 
      *   1. 저 인터페이스를 구현하는 클래스를 정의하고, 그 클래스의 객체를 생성해 넘겨준다. 

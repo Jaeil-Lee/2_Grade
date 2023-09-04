@@ -17,11 +17,11 @@ public class Test2 {
      *    가. printGender 메소드를 호출할 때, CheckPerson 객체를 인자로 넘겨줘야 하는데, 
      *       그 객체가 남자인지 여자인지를 판단해서 남자이면 true를 여자이면 false를 반환한다. 
      */
-    Person p1 = new Person("고길동", LocalDate.of(2000, 1, 4), "gdhong@gmail.com", Sex.MALE);
-    Person p2 = new Person("일지매", LocalDate.of(1995, 2, 12), "gmil@gmail.com", Sex.FEMALE);
-    Person p3 = new Person("박문수", LocalDate.of(1988, 5, 31), "mspark@gmail.com", Sex.MALE);
-    Person p4 = new Person("둘리", LocalDate.of(1985, 3, 4), "dr@gmail.com", Sex.MALE);
-    Person p5 = new Person("엘사", LocalDate.of(2003, 4, 21), "elsa@gmail.com", Sex.FEMALE);
+    Person p1 = new Person("고길동", LocalDate.of(2000, 1, 4), "gdhong@gmail.com", Sex_enum.MALE);
+    Person p2 = new Person("일지매", LocalDate.of(1995, 2, 12), "gmil@gmail.com", Sex_enum.FEMALE);
+    Person p3 = new Person("박문수", LocalDate.of(1988, 5, 31), "mspark@gmail.com", Sex_enum.MALE);
+    Person p4 = new Person("둘리", LocalDate.of(1985, 3, 4), "dr@gmail.com", Sex_enum.MALE);
+    Person p5 = new Person("엘사", LocalDate.of(2003, 4, 21), "elsa@gmail.com", Sex_enum.FEMALE);
 
     List<Person> list = new ArrayList<>();
     list.add(p1); list.add(p2); list.add(p3); list.add(p4); list.add(p5);
@@ -32,7 +32,7 @@ public class Test2 {
      * 3. 람다식으로 생성
      */
     // printGender(list, (p)->p.getGender()==Sex.MALE);
-    printPeronsLambda(list, (p)->p.getGender()==Sex.FEMALE, (p)->{System.out.println(p.getName());;});
+    printPeronsLambda(list, (p)->p.getGender()==Sex_enum.FEMALE, (p)->{System.out.println(p.getName());;});
   }
 
 

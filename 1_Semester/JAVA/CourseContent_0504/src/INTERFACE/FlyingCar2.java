@@ -4,19 +4,15 @@ package INTERFACE;
 
 
 interface Flyable {
-
 	void fly();
-
 }
 
 
 class Car {
-
   int speed;
   void setSpeed (int speed){
     this.speed = speed;
   }
-
 }
 
 

@@ -2,7 +2,9 @@ package CourseContent_0315;
 
 
 class Account {
-  
+  Account(){
+     super();
+  }
   // 전부 private로 선언 했기 때문에 해당 class 안에서만 접근 가능! 
   private int regNumber;
   private String name;

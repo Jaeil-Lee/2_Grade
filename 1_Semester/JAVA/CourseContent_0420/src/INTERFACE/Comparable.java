@@ -9,3 +9,14 @@ public interface Comparable {
   // 다른 클래스에서 사용할 수 있는 메소드의 리스트를 나열하는 것이다. 
   int compareTo(Comparable obj); 
 }
+
+
+/**
+ * InnerComparable
+ */
+@FunctionalInterface
+public interface Bigo {
+  int pras(Big obj);
+  int lee(Big obj);
+  
+}
