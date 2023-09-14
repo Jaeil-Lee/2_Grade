@@ -61,3 +61,5 @@ Route::delete('/removeupup',[UserController::class, 'test']);
 /* 🟢 리소르 컨트롤러 라우터 적용 방식 */
 Route::resource('/users', UserController::class); 
 /* => 이렇게 하나로 다 통일하면 자동으로 알아서 매핑시켜준다.  */
+
+

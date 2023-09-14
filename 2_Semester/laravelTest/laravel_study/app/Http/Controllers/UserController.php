@@ -14,7 +14,7 @@ class UserController extends Controller
      */
 
     // 클래스의 멤버 변수로 둔다.  => protected 안 적으면 에러뜬다
-    protected $users = [
+    protected static $users = [
         ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'],
         ['id'=>2,'name'=>'박은영','birthDate'=>'1969/01/19','email'=>'tbvjdnajs007@naver.com'],
         ['id'=>3,'name'=>'이재일','birthDate'=>'1994/10/01','email'=>'lji941001@naver.com'],
@@ -32,6 +32,7 @@ class UserController extends Controller
            2. 가져온 사용자 정보를 blade 파일에 넘겨 주면서 실행한다   
         */
 
+        /* 이 부분을 멤버 변수로 올리자 .🔻 */
         // $users = [
         //             ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'],
         //             ['id'=>2,'name'=>'박은영','birthDate'=>'1969/01/19','email'=>'tbvjdnajs007@naver.com'],
@@ -42,7 +43,9 @@ class UserController extends Controller
 
         return view('welcome',
             [
-                'users'=>$this->users
+                // 'users'=>$users
+                // 'users'=> self::$users
+                'users'=>UserController::$users    //  이 둘다 static 에서 가져 오는 것
             ]
         );
 
@@ -89,9 +92,25 @@ class UserController extends Controller
     {
         /* 
             1. id를 가지고 DB에서 레코드 하나를 인출 
+                // select * from users where id = $id
             2. 인출된 그 정보를 변수 $user에 할당 
             3. 그 $user 값을 blade에 전달하면서 실행.
         */
+
+        $userFound = null;
+        foreach (UserController::$users as $user) {
+            if ($user["id"]  == $id){
+                $userFound = $user;
+                break;
+            }
+        }
+
+        // $userFound :  ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'] 이런게 들어가 있을 것이다
+        // 못 찾았으면 $userFound는 null 값을 가질텐데, 
+        // 이때 null 대신에 빈 배열 []을 블레이드 파일에 넘겨주자
+        $userFound =  $userFound!=null ? $userFound : [];
+        return view('/userPage/user_info',['user'=> $userFound]);
+
     }
 
     /**
@@ -99,7 +118,19 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        /* 
+            1. $id 값에 해당하는 사용자 정보를 DB에서 읽어온다
+            2. 읽어온 그 사용자 정보를 blade 파일에 넘겨 주면서 그 blade를 실행.
+        */
+        $userFound = null;
+        foreach (UserController::$users as $user) {
+            if ($user["id"]  == $id){
+                $userFound = $user;
+                break;
+            }
+        }
+        // $userFound :  ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'] 이런게 들어가 있을 것이다
+        return view ('/userPage/update_form', ['user'=> $userFound]);
     }
 
     /**
@@ -107,7 +138,27 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        /*
+            1. Request 객체에서 사용자가 입력한 값을 빼와야 한다. 
+            2. 위에서 뺴온 값으로 $id에 해당하는 DB 레코드를 찾아서 update를 한다
+            3. 사용자 상세보기 view로 연결시켜 준다
+         */
+        $name = $request -> name;  //$request -> input("name"); 
+        $birthDate = $request -> birthDate;
+        $email = $request -> email;
+
+        $updateUser = null;
+        foreach (UserController::$users as $user) {
+            if ($user["id"]  == $id){
+                $user["name"] = $name;
+                $user["birthDate"] = $birthDate;
+                $user["email"] = $email;
+                $updateUser = $user;
+                break;
+            }
+        }
+        return view('/userPage/user_info',['user'=>$updateUser]);
+
     }
 
     /**
