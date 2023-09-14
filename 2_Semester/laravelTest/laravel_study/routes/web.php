@@ -53,9 +53,11 @@ Route::delete('/remove',[UserController::class, 'destroy']);
 Route::delete('/removeupup',[UserController::class, 'test']);
 
 
+
+/* 기존에 사용하던 라우터 방식 */
 // Route::get('photos',[PhotoController::class,'index']);
 // Route::post('photos',[PhotoController::class,'store']);
 
-//=> 일케 하나로 다 통일 Route::post('photos',PhotoController::class);
-
-Route::resource('/users', UserController::class); // 자동으로 알아서 매핑시켜준다. 
+/* 🟢 리소르 컨트롤러 라우터 적용 방식 */
+Route::resource('/users', UserController::class); 
+/* => 이렇게 하나로 다 통일하면 자동으로 알아서 매핑시켜준다.  */

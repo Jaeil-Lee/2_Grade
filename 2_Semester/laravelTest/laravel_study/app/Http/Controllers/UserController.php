@@ -12,6 +12,19 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    // 클래스의 멤버 변수로 둔다.  => protected 안 적으면 에러뜬다
+    protected $users = [
+        ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'],
+        ['id'=>2,'name'=>'박은영','birthDate'=>'1969/01/19','email'=>'tbvjdnajs007@naver.com'],
+        ['id'=>3,'name'=>'이재일','birthDate'=>'1994/10/01','email'=>'lji941001@naver.com'],
+        ['id'=>4,'name'=>'이재성','birthDate'=>'1996/12/01','email'=>'ljs7068@naver.com'],
+        ['id'=>6,'name'=>'사야카','birthDate'=>'1997/12/06','email'=>'sayaka1001@yahoo.com']
+     ]; //DB에서 읽어온 정보를 $users 변수에 할당했다고 가정 
+
+
+
+
     public function index()
     {
         /* 
@@ -19,17 +32,17 @@ class UserController extends Controller
            2. 가져온 사용자 정보를 blade 파일에 넘겨 주면서 실행한다   
         */
 
-        $users = [
-                    ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'],
-                    ['id'=>2,'name'=>'박은영','birthDate'=>'1969/01/19','email'=>'tbvjdnajs007@naver.com'],
-                    ['id'=>3,'name'=>'이재일','birthDate'=>'1994/10/01','email'=>'lji941001@naver.com'],
-                    ['id'=>4,'name'=>'이재성','birthDate'=>'1996/12/01','email'=>'ljs7068@naver.com'],
-                    ['id'=>6,'name'=>'사야카','birthDate'=>'1997/12/06','email'=>'sayaka1001@yahoo.com']
-                 ]; //DB에서 읽어온 정보를 $users 변수에 할당했다고 가정 
+        // $users = [
+        //             ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'],
+        //             ['id'=>2,'name'=>'박은영','birthDate'=>'1969/01/19','email'=>'tbvjdnajs007@naver.com'],
+        //             ['id'=>3,'name'=>'이재일','birthDate'=>'1994/10/01','email'=>'lji941001@naver.com'],
+        //             ['id'=>4,'name'=>'이재성','birthDate'=>'1996/12/01','email'=>'ljs7068@naver.com'],
+        //             ['id'=>6,'name'=>'사야카','birthDate'=>'1997/12/06','email'=>'sayaka1001@yahoo.com']
+        //          ]; //DB에서 읽어온 정보를 $users 변수에 할당했다고 가정 
 
         return view('welcome',
             [
-                'users'=>$users
+                'users'=>$this->users
             ]
         );
 
@@ -70,9 +83,9 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.  상세 냐용 보이게 
+     * Display the specified resource.  상세 내용 보이게 
      */
-    public function show(string $id)
+    public function show(string $id) // 🟢 사용자가 요청하는 특정 글의 상세 내용을 보여주는 기능을 수행한다
     {
         /* 
             1. id를 가지고 DB에서 레코드 하나를 인출 
