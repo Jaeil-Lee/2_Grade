@@ -18,10 +18,7 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/', function () {
-    return view('welcome',['users'=>[]]); 
-    /* users에 나중에 들어오는 값을 채우기 위해 그리고 시작 시 에러 나지 않게 하기 해서 빈 배열을 작성해 놓는다 */
-});
+
 
 
 /* 
@@ -52,6 +49,15 @@ Route::delete('/remove',[UserController::class, 'destroy']);
 // 연습
 Route::delete('/removeupup',[UserController::class, 'test']);
 
+
+
+
+
+
+Route::get('/', function () {
+    return view('welcome',['users'=>[]]); 
+    /* users에 나중에 들어오는 값을 채우기 위해 그리고 시작 시 에러 나지 않게 하기 해서 빈 배열을 작성해 놓는다 */
+});
 
 
 /* 기존에 사용하던 라우터 방식 */

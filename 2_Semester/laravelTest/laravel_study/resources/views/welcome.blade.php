@@ -832,13 +832,13 @@
 
 <body class="antialiased">
     <div>
-        <a href="/users/create">1. 회원가입</a>
+        <a href="/users/create" style="font-size: 200px">1. 회원가입</a>
     </div>
     <div>
-        <a href="/users">2. 회원 리스트</a>
+        <a href="/users" style="font-size: 200px">2. 회원 리스트</a>
         @foreach ($users as $user)
-            <div style="border: 1px solid black">
-                <a href="/users/{{ $user['id'] }}">
+            <div style="border: 1px solid ">
+                <a href="/users/{{ $user['id'] }} ">
                     <p>이름： {{ $user['name'] }} &nbsp;&nbsp;&nbsp;|| &nbsp;&nbsp; email: {{ $user['email'] }}</p>
                 </a>
             </div>

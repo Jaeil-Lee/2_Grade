@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    /*
+      Display a listing of the resource.
+    */
 
     // 클래스의 멤버 변수로 둔다.  => protected 안 적으면 에러뜬다
     protected static $users = [
@@ -32,7 +32,7 @@ class UserController extends Controller
            2. 가져온 사용자 정보를 blade 파일에 넘겨 주면서 실행한다   
         */
 
-        /* 이 부분을 멤버 변수로 올리자 .🔻 */
+        /* 이 부분을 멤버 변수로 올리자 🔺 */
         // $users = [
         //             ['id'=>1,'name'=>'이상열','birthDate'=>'1967/08/09','email'=>'hansung@naver.com'],
         //             ['id'=>2,'name'=>'박은영','birthDate'=>'1969/01/19','email'=>'tbvjdnajs007@naver.com'],
@@ -40,7 +40,7 @@ class UserController extends Controller
         //             ['id'=>4,'name'=>'이재성','birthDate'=>'1996/12/01','email'=>'ljs7068@naver.com'],
         //             ['id'=>6,'name'=>'사야카','birthDate'=>'1997/12/06','email'=>'sayaka1001@yahoo.com']
         //          ]; //DB에서 읽어온 정보를 $users 변수에 할당했다고 가정 
-
+        // dd(static::$users);
         return view('welcome',
             [
                 // 'users'=>$users
@@ -154,10 +154,14 @@ class UserController extends Controller
                 $user["birthDate"] = $birthDate;
                 $user["email"] = $email;
                 $updateUser = $user;
+                // dd(static::$users[$id]);
                 break;
             }
         }
-        return view('/userPage/user_info',['user'=>$updateUser]);
+        // return view('/userPage/user_info',['user'=>$updateUser]);
+        // 클라이언트에게 결과 페이지를 보려면 이 URL로 다시 GET 방식으로 요청하라는 지시
+
+        return redirect('/users/'.$updateUser['id']);
 
     }
 
@@ -166,6 +170,17 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        /*
+            1. PRIMARY KEY 칼럼 값으로 $id 값을 가지는 레코드를 DB에서 찾아서 삭제
+            2. 리스트 페이지로 이동
+              => 지금 하고 있는게 DB시뮬레이션을 하고 있는 것이다. 
+        */
+
+        for ($i=0; $i < sizeof(static::$users); $i++) { 
+            if (static::$users[$i]['id']==$id) {
+                unset(static::$users[$i]);
+            }
+        }
+        return view('welcome',['users'=> static::$users]);
     }
 }
